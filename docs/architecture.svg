@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 700" font-family="Arial, Helvetica, sans-serif">
+  <rect width="1024" height="700" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="30" y="42" font-size="30" font-weight="bold" fill="#111111">Architecture</text>
+  <text x="512" y="110" font-size="14" font-weight="bold" fill="#111111" text-anchor="middle">AWS Incident Buddy - AWS Architecture (region: us-east-1)</text>
+
+  <!-- AWS Cloud boundary -->
+  <rect x="230" y="135" width="760" height="520" fill="none" stroke="#1f1f1f" stroke-width="1.3"/>
+  <g transform="translate(244,148)">
+    <rect x="0" y="0" width="22" height="16" fill="#232f3e"/>
+    <text x="2" y="12" font-size="9" fill="#ff9900" font-weight="bold">aws</text>
+  </g>
+  <text x="276" y="160" font-size="11" fill="#232f3e" font-weight="bold">AWS Cloud</text>
+
+  <!-- ============ ICONS ============ -->
+
+  <!-- User -->
+  <g transform="translate(30,195)">
+    <circle cx="30" cy="18" r="10" fill="none" stroke="#5a2d82" stroke-width="2.5"/>
+    <path d="M12 48 C12 32 48 32 48 48" fill="none" stroke="#5a2d82" stroke-width="2.5"/>
+    <text x="30" y="68" font-size="9" fill="#333" text-anchor="middle">Developer /</text>
+    <text x="30" y="80" font-size="9" fill="#333" text-anchor="middle">AWS Engineer</text>
+    <text x="30" y="92" font-size="9" fill="#333" text-anchor="middle">(browser)</text>
+  </g>
+
+  <!-- CloudFront -->
+  <g transform="translate(150,195)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#8c4fff"/>
+    <circle cx="28" cy="28" r="17" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <path d="M11 28 H45 M28 11 V45 M15 18 Q28 28 41 38 M15 38 Q28 28 41 18" stroke="#ffffff" stroke-width="1.3" fill="none"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">Amazon CloudFront</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">(HTTPS, SPA fallback)</text>
+  </g>
+
+  <!-- API Gateway -->
+  <g transform="translate(320,195)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#e7157b"/>
+    <path d="M18 20 L10 28 L18 36 M38 20 L46 28 L38 36 M32 16 L24 40" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">Amazon API Gateway</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">HTTP API  POST /analyze</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">CORS + throttling</text>
+  </g>
+
+  <!-- Lambda -->
+  <g transform="translate(505,195)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#ed7100"/>
+    <path d="M14 44 L30 12 L36 24 L26 44 Z" fill="#ffffff"/>
+    <path d="M30 44 L42 20 L46 28 L38 44 Z" fill="#ffffff" opacity="0.6"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">AWS Lambda (Node.js 22)</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">validate + prompt +</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">parse structured JSON</text>
+  </g>
+
+  <!-- Bedrock -->
+  <g transform="translate(685,195)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#01a88d"/>
+    <g stroke="#ffffff" stroke-width="1.8" fill="#ffffff">
+      <circle cx="18" cy="18" r="3.2"/>
+      <circle cx="40" cy="16" r="3.2"/>
+      <circle cx="36" cy="40" r="3.2"/>
+      <circle cx="20" cy="38" r="3.2"/>
+      <circle cx="28" cy="28" r="3.2"/>
+    </g>
+    <path d="M18 18 L28 28 L40 16 M28 28 L36 40 M28 28 L20 38" stroke="#ffffff" stroke-width="1.4" fill="none"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">Amazon Bedrock</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">Nova Lite</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">amazon.nova-lite-v1:0</text>
+  </g>
+
+  <!-- S3 -->
+  <g transform="translate(150,360)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#1b9e4b"/>
+    <path d="M14 16 Q28 10 42 16 L42 40 Q28 46 14 40 Z" fill="#ffffff"/>
+    <path d="M14 16 Q28 22 42 16" fill="none" stroke="#1b9e4b" stroke-width="1.6"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">Amazon S3</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">private bucket (OAC)</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">React/Vite build</text>
+  </g>
+
+  <!-- CloudWatch -->
+  <g transform="translate(505,360)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#e7157b"/>
+    <path d="M14 18 Q22 12 30 18 Q38 24 46 18" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="24" cy="34" r="11" fill="none" stroke="#ffffff" stroke-width="2.4"/>
+    <path d="M32 42 L42 50" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">Amazon CloudWatch</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">logs + metrics</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">(no raw incident text)</text>
+  </g>
+
+  <!-- IAM -->
+  <g transform="translate(505,520)">
+    <rect x="0" y="0" width="56" height="56" rx="8" fill="#e7157b"/>
+    <circle cx="22" cy="24" r="10" fill="none" stroke="#ffffff" stroke-width="2.4"/>
+    <path d="M30 32 L44 46" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round"/>
+    <text x="28" y="72" font-size="9" fill="#333" text-anchor="middle">AWS IAM</text>
+    <text x="28" y="83" font-size="8" fill="#333" text-anchor="middle">least-privilege role</text>
+    <text x="28" y="94" font-size="8" fill="#333" text-anchor="middle">(bedrock:InvokeModel only)</text>
+  </g>
+
+  <!-- ============ ARROWS ============ -->
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#5a2d82"/>
+    </marker>
+    <marker id="arrowO" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#ed7100"/>
+    </marker>
+    <marker id="arrowG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#1b9e4b"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#888"/>
+    </marker>
+    <marker id="arrowT" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#01a88d"/>
+    </marker>
+  </defs>
+
+  <!-- User -> CloudFront -->
+  <line x1="80" y1="223" x2="148" y2="223" stroke="#5a2d82" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="114" y="217" font-size="8" fill="#5a2d82" text-anchor="middle">HTTPS</text>
+
+  <!-- CloudFront -> API Gateway -->
+  <line x1="206" y1="223" x2="318" y2="223" stroke="#5a2d82" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="262" y="217" font-size="8" fill="#5a2d82" text-anchor="middle">/analyze (CORS)</text>
+
+  <!-- API Gateway -> Lambda -->
+  <line x1="376" y1="223" x2="503" y2="223" stroke="#ed7100" stroke-width="1.6" marker-end="url(#arrowO)"/>
+  <text x="440" y="217" font-size="8" fill="#ed7100" text-anchor="middle">Lambda proxy</text>
+
+  <!-- Lambda <-> Bedrock -->
+  <line x1="561" y1="217" x2="683" y2="217" stroke="#01a88d" stroke-width="1.6" marker-end="url(#arrowT)"/>
+  <line x1="683" y1="231" x2="563" y2="231" stroke="#01a88d" stroke-width="1.6" marker-end="url(#arrowT)"/>
+  <text x="623" y="211" font-size="8" fill="#01a88d" text-anchor="middle">Converse API</text>
+  <text x="623" y="245" font-size="8" fill="#01a88d" text-anchor="middle">structured JSON</text>
+
+  <!-- CloudFront -> S3 -->
+  <line x1="178" y1="251" x2="178" y2="358" stroke="#1b9e4b" stroke-width="1.6" marker-end="url(#arrowG)"/>
+  <text x="178" y="308" font-size="8" fill="#1b9e4b" text-anchor="middle">serves app</text>
+
+  <!-- Lambda -> CloudWatch -->
+  <line x1="533" y1="251" x2="533" y2="358" stroke="#888" stroke-width="1.4" marker-end="url(#arrowGray)"/>
+  <text x="548" y="308" font-size="8" fill="#888" text-anchor="middle">logs</text>
+
+  <!-- Lambda -> IAM (assumes) -->
+  <path d="M510 251 C470 320 470 450 503 540" fill="none" stroke="#888" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowGray)"/>
+  <text x="462" y="400" font-size="8" fill="#888" text-anchor="middle">assumes</text>
+
+  <!-- Bedrock model-access note -->
+  <rect x="800" y="300" width="175" height="70" rx="6" fill="#fff5f5" stroke="#e23b3b" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="887" y="322" font-size="8.5" fill="#c0392b" text-anchor="middle" font-weight="bold">Bedrock model access</text>
+  <text x="887" y="336" font-size="8" fill="#c0392b" text-anchor="middle">must be enabled for</text>
+  <text x="887" y="349" font-size="8" fill="#c0392b" text-anchor="middle">amazon.nova-lite-v1:0</text>
+  <text x="887" y="362" font-size="8" fill="#c0392b" text-anchor="middle">(one-time, per region)</text>
+  <path d="M743 223 C775 223 775 320 798 330" fill="none" stroke="#e23b3b" stroke-width="1" stroke-dasharray="4 3"/>
+
+  <!-- Agent behavior note -->
+  <rect x="800" y="195" width="175" height="78" rx="6" fill="#f3f8ff" stroke="#2d6cdf" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="887" y="214" font-size="8.5" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Agent guardrails</text>
+  <text x="887" y="228" font-size="7.6" fill="#1d4ed8" text-anchor="middle">inferential (likely vs</text>
+  <text x="887" y="239" font-size="7.6" fill="#1d4ed8" text-anchor="middle">confirmed cause)</text>
+  <text x="887" y="250" font-size="7.6" fill="#1d4ed8" text-anchor="middle">no account access</text>
+  <text x="887" y="261" font-size="7.6" fill="#1d4ed8" text-anchor="middle">no destructive commands</text>
+</svg>

@@ -1,0 +1,23 @@
+# AWS Amplify Hosting build spec (use this if you connect the Git repo
+# instead of drag-and-dropping amplify-frontend.zip).
+#
+# For a standalone demo with no backend, set the environment variable
+# VITE_USE_MOCK = true in the Amplify console (App settings -> Environment
+# variables). To point at a real API, set VITE_API_URL instead.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd frontend
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: frontend/dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - frontend/node_modules/**/*

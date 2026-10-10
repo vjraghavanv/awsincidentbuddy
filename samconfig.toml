@@ -1,0 +1,17 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "aws-incident-buddy"
+resolve_s3 = true
+s3_prefix = "aws-incident-buddy"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "BedrockRegion=\"us-east-1\" BedrockModelId=\"amazon.nova-lite-v1:0\" MaxInputLength=\"5000\" AllowedOrigin=\"*\""
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.local_start_api.parameters]
+warm_containers = "EAGER"

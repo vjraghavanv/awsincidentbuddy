@@ -1,0 +1,3 @@
+{
+  "incident": "An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:sts::123456789012:assumed-role/my-lambda-role/my-function is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::my-app-bucket/config/settings.json\" because no identity-based policy allows the s3:GetObject action\nSTART RequestId: 7d1c-abc Version: $LATEST\nERROR Invoke Error {\"errorType\":\"AccessDenied\",\"errorMessage\":\"Access Denied\"}"
+}

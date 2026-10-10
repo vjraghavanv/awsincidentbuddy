@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS Incident Buddy - Lambda + HTTP API Gateway that analyzes AWS errors
+  using Amazon Bedrock (Nova Lite).
+
+Parameters:
+  BedrockRegion:
+    Type: String
+    Default: us-east-1
+    Description: AWS region where the Bedrock model is invoked.
+  BedrockModelId:
+    Type: String
+    Default: amazon.nova-lite-v1:0
+    Description: Bedrock model ID to use for analysis.
+  MaxInputLength:
+    Type: Number
+    Default: 5000
+    Description: Maximum accepted incident length in characters.
+  AllowedOrigin:
+    Type: String
+    Default: '*'
+    Description: CORS allowed origin for the frontend (set to your CloudFront/S3 URL in prod).
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: nodejs22.x
+
+Resources:
+  IncidentApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref AllowedOrigin
+        AllowHeaders:
+          - Content-Type
+        AllowMethods:
+          - POST
+          - OPTIONS
+
+  AnalyzeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: src/handler.analyzeIncident
+      Description: Analyzes a pasted AWS error via Amazon Bedrock.
+      Environment:
+        Variables:
+          BEDROCK_REGION: !Ref BedrockRegion
+          BEDROCK_MODEL_ID: !Ref BedrockModelId
+          MAX_INPUT_LENGTH: !Ref MaxInputLength
+          ALLOWED_ORIGIN: !Ref AllowedOrigin
+      Policies:
+        # Least-privilege: only allow invoking the specific Nova model.
+        - Statement:
+            - Sid: InvokeBedrockNovaModel
+              Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource:
+                - !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/${BedrockModelId}
+      Events:
+        AnalyzePost:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref IncidentApi
+            Path: /analyze
+            Method: POST
+        AnalyzeOptions:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref IncidentApi
+            Path: /analyze
+            Method: OPTIONS
+
+Outputs:
+  ApiUrl:
+    Description: Base invoke URL for the HTTP API. Append /analyze for the endpoint.
+    Value: !Sub https://${IncidentApi}.execute-api.${AWS::Region}.amazonaws.com
+  AnalyzeEndpoint:
+    Description: Full POST endpoint for incident analysis.
+    Value: !Sub https://${IncidentApi}.execute-api.${AWS::Region}.amazonaws.com/analyze
+  FunctionName:
+    Description: Lambda function name.
+    Value: !Ref AnalyzeFunction

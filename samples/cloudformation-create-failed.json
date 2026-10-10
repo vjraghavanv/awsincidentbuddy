@@ -1,0 +1,3 @@
+{
+  "incident": "CloudFormation stack \"payments-service-prod\" rolled back.\nResource handler returned message: \"Resource of type 'AWS::RDS::DBInstance' with identifier 'payments-db' already exists.\" (RequestToken: a1b2c3, HandlerErrorCode: AlreadyExists)\nStatus: CREATE_FAILED\nThe following resource(s) failed to create: [PaymentsDatabase]. Rollback requested by user."
+}

@@ -1,0 +1,13 @@
+{
+  "name": "aws-incident-buddy-backend",
+  "version": "1.0.0",
+  "description": "Lambda backend for AWS Incident Buddy — analyzes AWS errors via Amazon Bedrock",
+  "type": "module",
+  "main": "src/handler.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.700.0"
+  }
+}

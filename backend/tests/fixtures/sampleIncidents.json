@@ -1,0 +1,23 @@
+{
+  "validModelResponse": {
+    "service": "AWS Lambda",
+    "severity": "HIGH",
+    "summary": "The Lambda function failed because it was denied permission to read an object from S3.",
+    "likelyCause": "The Lambda execution role may be missing the s3:GetObject permission for the target bucket.",
+    "confidence": "MEDIUM",
+    "recommendedActions": [
+      "Inspect the Lambda execution role's attached policies.",
+      "Confirm whether an identity-based policy grants s3:GetObject on the bucket.",
+      "Check for an S3 bucket policy or SCP that might deny access."
+    ],
+    "checkNext": [
+      "The Lambda execution role in IAM.",
+      "The S3 bucket policy for my-app-bucket."
+    ],
+    "safetyWarning": "Verify the exact permission gap before editing IAM policies. Avoid granting broad s3:* access."
+  },
+  "modelResponseWithFences": "```json\n{\"service\":\"API Gateway\",\"severity\":\"MEDIUM\",\"summary\":\"A 403 was returned.\",\"likelyCause\":\"The request may not match a configured route.\",\"confidence\":\"LOW\",\"recommendedActions\":[\"Check the route configuration.\"],\"checkNext\":[\"API Gateway routes.\"],\"safetyWarning\":\"Confirm before changing routes.\"}\n```",
+  "modelResponseWithProse": "Here is the analysis you requested:\n{\"service\":\"CloudFormation\",\"severity\":\"HIGH\",\"summary\":\"Stack creation failed.\",\"likelyCause\":\"A resource may already exist.\",\"confidence\":\"HIGH\",\"recommendedActions\":[\"Check for the existing resource.\"],\"checkNext\":[\"The RDS console.\"],\"safetyWarning\":\"Do not delete resources without verifying.\"}\nLet me know if you need more detail.",
+  "malformedModelResponse": "I'm sorry, I cannot produce JSON for this input.",
+  "missingFieldsResponse": "{\"service\":\"S3\",\"severity\":\"LOW\"}"
+}
